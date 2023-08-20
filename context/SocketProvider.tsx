@@ -14,7 +14,7 @@ export const useSocket = () => {
 // Provider component that wraps the app and provides the socket through the context
 export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
   // Create a new socket connection using the socket.io-client library
-  const socket = useMemo(() => io(process.env.SERVER_URL!), []);
+  const socket = useMemo(() => io("https://huddle-b9n6.onrender.com"), []);
 
   // Render the children components with the socket value provided through the context
   return (
