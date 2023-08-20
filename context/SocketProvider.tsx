@@ -1,3 +1,4 @@
+"use client";
 import React, { useContext, useMemo } from "react";
 import { io } from "socket.io-client";
 
