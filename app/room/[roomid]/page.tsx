@@ -49,7 +49,7 @@ function Room({ params }: Props) {
   }, [activeUsers, handleUserJoined, socket]);
 
   return (
-    <main className="w-full h-screen  lg:p-4 lg:py-12 py-0">
+    <main className="w-full h-[100svh]  lg:p-4 lg:py-12 py-0">
       <div className="w-full max-w-7xl  mx-auto h-full flex flex-col lg:flex-row">
         {/* mobile topbar */}
         <div className="w-full lg:hidden shadow-md p-2 py-2 px-4 flex justify-between items-center">
