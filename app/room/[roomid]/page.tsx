@@ -17,8 +17,6 @@ function Room({ params }: Props) {
 
   const [activeUsers, setActiveUsers] = useState([
     localStorage.getItem("username"),
-    "nainish",
-    "kakashi",
   ]);
   console.log(activeUsers);
   const [remoteId, setRemoteId] = useState("");
@@ -51,11 +49,19 @@ function Room({ params }: Props) {
   }, [activeUsers, handleUserJoined, socket]);
 
   return (
-    <main className="w-full h-screen lg:p-4 lg:py-12 py-0">
+    <main className="w-full h-screen  lg:p-4 lg:py-12 py-0">
       <div className="w-full max-w-7xl  mx-auto h-full flex flex-col lg:flex-row">
+        {/* mobile topbar */}
+        <div className="w-full lg:hidden shadow-md p-2 py-2 px-4 flex justify-between items-center">
+          <h1 className="font-semibold text-2xl  ">Sync-Chat</h1>
+          <h3 className="font-medium pl-2 text-xl">
+            Chatroom :{" "}
+            <span className=" text-3xl text-red-300">{params.roomid}</span>
+          </h3>
+        </div>
         {/* sidebar */}
         <div className=" w-[24%] lg:block hidden ">
-          <div className=" shadow-md  rounded-3xl m-2 p-4 border border-red-200">
+          <div className=" shadow-md  rounded-3xl m-2 p-4 ">
             <h3 className="font-medium pl-2 text-xl">
               Chatroom :{" "}
               <span className=" text-3xl text-red-300">{params.roomid}</span>
@@ -73,7 +79,7 @@ function Room({ params }: Props) {
           </div>
         </div>
         {/* chat container */}
-        <div className="w-full h-full">
+        <div className="w-full h-[93.7%] lg:h-full">
           <ChatContainer yourusername={activeUsers[0]!} />
         </div>
       </div>

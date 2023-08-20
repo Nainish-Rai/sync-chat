@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import ChatTextBar from "../components/ChatTextBar";
 import { useSocket } from "@/context/SocketProvider";
-
 type Props = {
   yourusername: string;
 };
@@ -12,10 +11,7 @@ type Message = {
 
 function ChatContainer({ yourusername }: Props) {
   const socket = useSocket();
-  const [msgArray, setMsgArray] = useState<Message[]>([
-    { text: "sdasd hello fifaslf", user: "abhirag" },
-    { text: "hello a skldjasldj akldjlasjd l", user: yourusername },
-  ]);
+  const [msgArray, setMsgArray] = useState<Message[]>([]);
   useEffect(() => {
     socket.on("msg:send", (data: { text: string; user: string }) => {
       setMsgArray((prev) => [...prev, data]);
@@ -42,7 +38,7 @@ function ChatContainer({ yourusername }: Props) {
   }, []);
 
   return (
-    <div className="lg:border shadow-lg lg:rounded-3xl  p-4 h-full  lg:m-2 m-0 border-black flex flex-col ">
+    <div className="lg:border shadow-lg  lg:rounded-3xl  p-4 h-full  lg:m-2 py-0 m-0  flex flex-col ">
       <div
         ref={messageEl}
         className=" h-full flex flex-col py-4 overflow-scroll scrollbar-hide"
@@ -51,7 +47,7 @@ function ChatContainer({ yourusername }: Props) {
           if (msg.user === yourusername) {
             return (
               <div
-                className="text-black self-end bg-red-200 rounded-2xl w-fit p-2 px-4 pl-6 lg:max-w-2xl max-w-sm   my-2"
+                className="text-black self-end bg-red-200 rounded-2xl w-fit p-2 px-4 pl-6 lg:max-w-xl max-w-sm   my-2"
                 key={index}
               >
                 <h5 className="font-bold text-black/70 text-right text-xs">
@@ -63,7 +59,7 @@ function ChatContainer({ yourusername }: Props) {
           }
           return (
             <div
-              className="rounded-2xl w-fit p-2 px-4 pr-6  bg-black/90 text-white lg:max-w-2xl max-w-sm  text-left my-2"
+              className="rounded-2xl w-fit p-2 px-4 pr-6  bg-black/90 text-white lg:max-w-xl max-w-sm  text-left my-2"
               key={index}
             >
               <h5 className="font-bold text-left text-xs">{msg.user}</h5>

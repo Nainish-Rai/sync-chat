@@ -12,18 +12,20 @@ function ChatTextBar({ handleMsgSubmit, username }: Props) {
   const [textMsg, setTextMsg] = useState("");
 
   return (
-    <div className="pt-4">
+    <div className="pt-4 lg:pb-4 pb-2">
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          handleMsgSubmit(textMsg, username);
-          setTextMsg("");
+          if (textMsg != "") {
+            handleMsgSubmit(textMsg, username);
+            setTextMsg("");
+          }
         }}
         className="flex space-x-1"
       >
         <Input
           value={textMsg}
-          className="border shadow border-black rounded-full"
+          className="border shadow  rounded-full"
           onChange={(e) => {
             setTextMsg(e.target.value);
           }}
