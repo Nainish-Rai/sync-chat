@@ -13,7 +13,7 @@ export const useSocket = () => {
 // Provider component that wraps the app and provides the socket through the context
 export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
   // Create a new socket connection using the socket.io-client library
-  const socket = useMemo(() => io("http://localhost:8000"), []);
+  const socket = useMemo(() => io(process.env.SERVER_URL!), []);
 
   // Render the children components with the socket value provided through the context
   return (
